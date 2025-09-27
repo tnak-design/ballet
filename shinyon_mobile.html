@@ -1,219 +1,199 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!doctype html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2487.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Hiragino Sans'}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    span.s1 {font: 12.0px Helvetica}
-    span.s2 {font: 12.0px 'Hiragino Sans'}
-    span.s3 {font: 12.0px 'Lucida Grande'}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>綺麗なシニヨンを作るためのコツ（随時更新）</title>
+<meta name="color-scheme" content="light dark">
+<style>
+  :root{
+    --bg:#fff;
+    --fg:#0f1115;
+    --muted:#5b6270;
+    --card:#f7f7f9;
+    --border:#e6e8ee;
+    --accent:#4a7dff;
+    --accent-fg:#fff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1115;
+      --fg:#f4f6fb;
+      --muted:#b7bfcc;
+      --card:#171a23;
+      --border:#2a2f3a;
+      --accent:#6da0ff;
+      --accent-fg:#0b1220;
+    }
+  }
+* { box-sizing: border-box; }
+html, body {
+  height: auto;
+  min-height: 100%;
+}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic UI","YuGothic","Noto Sans JP","Segoe UI",Roboto,Arial,sans-serif;
+    line-height:1.6;
+    -webkit-text-size-adjust:100%;
+  }
+  /* ← 下余白を小さく（固定フッターを想定しない） */
+  .wrap{max-width:420px; margin:0 auto; padding:16px 14px 24px;}
+  /* ← stickyを解除 */
+  header{position:static !important; top:auto; z-index:auto; background:var(--bg); padding:10px 14px 12px; margin:-16px -14px 10px; border-bottom:1px solid var(--border)}
+  h1{margin:0 0 6px; font-size: clamp(18px, 5.8vw, 24px); letter-spacing:.01em}
+  .lead{margin:0; color:var(--muted); font-size:clamp(12px, 3.8vw, 14px)}
+  .pill{display:inline-block; border:1px solid var(--border); background:var(--card); padding:6px 10px; border-radius:999px; font-size:12px; margin-top:8px}
+  .intro{margin:14px 0; font-size:clamp(13px,4.4vw,15px);}
+  .section{margin:14px 0}
+  .section h2{font-size:clamp(15px,4.8vw,18px); margin:0 0 8px}
+  ul.basic{margin:8px 0 0 20px;padding:0}
+  ul.basic li{margin:.25em 0}
+  details{border:1px solid var(--border); border-radius:12px; background:var(--card); margin:6px 0}
+  summary{list-style:none; cursor:pointer; padding:12px 12px; font-weight:800; font-size:clamp(14px,4.6vw,17px); display:flex; align-items:center; gap:10px}
+  summary::-webkit-details-marker{display:none}
+  .badge{width:24px;height:24px;border-radius:999px;display:inline-grid;place-items:center;background:var(--accent);color:var(--accent-fg);font-size:12px;font-weight:800;flex:0 0 auto}
+  .chev{margin-left:auto; transition:transform .2s ease}
+  details[open] .chev{transform:rotate(90deg)}
+  .content{padding:0 12px 12px; font-size:clamp(13px,4.2vw,15px); color:var(--fg); background:var(--bg); border-top:1px dashed var(--border); border-bottom-left-radius:12px; border-bottom-right-radius:12px}
+  .content ul{margin:6px 0 0 20px}
+  .faq{font-size:13px}
+  /* actionsは使っていないが、念のため無効化（埋め込み時の干渉防止） */
+  .actions{display:none !important}
+  .btn{flex:1 1 auto; text-align:center; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); font-weight:700; font-size:14px; text-decoration:none; color:var(--fg)}
+  .btn.primary{background:var(--accent); color:var(--accent-fg); border-color:transparent}
+</style>
 </head>
 <body>
-<p class="p1">&lt;!doctype html&gt;</p>
-<p class="p1">&lt;html lang="ja"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">&lt;meta charset="utf-8"&gt;</p>
-<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"&gt;</p>
-<p class="p2"><span class="s1">&lt;title&gt;</span>綺麗なシニヨンを作るためのコツ（随時更新・スマホ版）<span class="s1">&lt;/title&gt;</span></p>
-<p class="p1">&lt;meta name="color-scheme" content="light dark"&gt;</p>
-<p class="p1">&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>:root{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--bg:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--fg:#0f1115;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--muted:#5b6270;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--card:#f7f7f9;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--border:#e6e8ee;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--accent:#4a7dff;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>--accent-fg:#fff;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>@media (prefers-color-scheme: dark){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg:#0f1115;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--fg:#f4f6fb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--muted:#b7bfcc;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card:#171a23;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border:#2a2f3a;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent:#6da0ff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-fg:#0b1220;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>*{box-sizing:border-box}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>html,body{height:100%}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>body{</p>
-<p class="p1"><span class="Apple-converted-space">    </span>margin:0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>background:var(--bg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>color:var(--fg);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic UI","YuGothic","Noto Sans JP","Segoe UI",Roboto,Arial,sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>line-height:1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>-webkit-text-size-adjust:100%;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.wrap{max-width:420px; margin:0 auto; padding:16px 14px 100px;}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>header{position:sticky; top:0; z-index:10; background:var(--bg); padding:10px 14px 12px; margin:-16px -14px 10px; border-bottom:1px solid var(--border); backdrop-filter:saturate(180%) blur(4px)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>h1{margin:0 0 6px; font-size: clamp(18px, 5.8vw, 24px); letter-spacing:.01em}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.lead{margin:0; color:var(--muted); font-size:clamp(12px, 3.8vw, 14px)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.pill{display:inline-block; border:1px solid var(--border); background:var(--card); padding:6px 10px; border-radius:999px; font-size:12px; margin-top:8px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.intro{margin:14px 0; font-size:clamp(13px,4.4vw,15px);}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.section{margin:14px 0}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.section h2{font-size:clamp(15px,4.8vw,18px); margin:0 0 8px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>ul.basic{margin:8px 0 0 20px;padding:0}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>ul.basic li{margin:.25em 0}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>details{border:1px solid var(--border); border-radius:12px; background:var(--card); margin:6px 0}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>summary{list-style:none; cursor:pointer; padding:12px 12px; font-weight:800; font-size:clamp(14px,4.6vw,17px); display:flex; align-items:center; gap:10px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>summary::-webkit-details-marker{display:none}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.badge{width:24px;height:24px;border-radius:999px;display:inline-grid;place-items:center;background:var(--accent);color:var(--accent-fg);font-size:12px;font-weight:800;flex:0 0 auto}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.chev{margin-left:auto; transition:transform .2s ease}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>details[open] .chev{transform:rotate(90deg)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.content{padding:0 12px 12px; font-size:clamp(13px,4.2vw,15px); color:var(--fg); background:var(--bg); border-top:1px dashed var(--border); border-bottom-left-radius:12px; border-bottom-right-radius:12px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.content ul{margin:6px 0 0 20px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.faq{font-size:13px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.actions{position:fixed; left:0; right:0; bottom:0; padding:10px 14px; background:var(--bg); border-top:1px solid var(--border); display:flex; gap:10px}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn{flex:1 1 auto; text-align:center; padding:10px 12px; border-radius:12px; border:1px solid var(--border); background:var(--card); font-weight:700; font-size:14px; text-decoration:none; color:var(--fg)}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.btn.primary{background:var(--accent); color:var(--accent-fg); border-color:transparent}</p>
-<p class="p1">&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">&lt;div class="wrap"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;</span>綺麗なシニヨンを作るためのコツ（随時更新）<span class="s1">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="lead"&gt;<span class="s2">スマホで見やすく、タップで展開できる形式</span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;span class="pill"&gt;<span class="s2">スマホ用｜</span>1<span class="s2">ページ</span>&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="intro"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>以下<span class="s1">4</span>点のポイントをおさえて、綺麗なシニヨンを作りましょう。<span class="s1">&lt;br&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>細かいチェックポイントも記載しているので、仕上げの確認に活用してください。<span class="s1">&lt;br&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span>（手順については、シニヨンレクチャー時にお伝えします）</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;<span class="s2">準備物</span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul class="basic"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;<span class="s2">ヘアゴム（輪っかではなく紐状、約</span>20cm<span class="s2">）</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;U<span class="s2">ピン</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;<span class="s2">必要に応じてアメピン</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;<span class="s2">ポイント（タップで展開）</span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;&lt;span class="badge"&gt;<span class="s2">①</span>&lt;/span&gt;<span class="s2">顎からの延長線上</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">横から見てラインが合っているか。</span>&lt;/li&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>高さが低すぎたり高すぎたりしていないか。<span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;&lt;span class="badge"&gt;<span class="s2">②</span>&lt;/span&gt;<span class="s2">後れ毛・前髪なし</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">細かい後れ毛も上がっているか。</span>&lt;/li&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>前髪は、コームでとかせる長さがあればジェルをつけて頭頂方向に流しているか。<span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">もみあげの毛も上がっているか。</span>&lt;/li&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>耳まわりが浮かず、頭の形にそってきれいに収まっているか。<span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;&lt;span class="badge"&gt;<span class="s2">③</span>&lt;/span&gt;<span class="s2">コームラインがつく仕上がり</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">髪の表面がなめらかに整っているか。</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">コームで整えたラインが見える状態か。</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;&lt;span class="badge"&gt;<span class="s2">④</span>&lt;/span&gt;<span class="s2">お団子はつぶして薄く</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>正面から見て頭頂より上にボリュームが飛び出していないか。<span class="s1">&lt;/li&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>丸みが大きく盛り上がらず、薄くコンパクトに収まっているか。<span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">形は「甘食パン」のように、ふんわりしつつ上から軽くつぶれた形になっているか（</span>&lt;a href="https://www.example.com" target="_blank" rel="noopener noreferrer"&gt;<span class="s2">サンプルリンク</span>&lt;/a&gt;<span class="s2">）。</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;<span class="s2">短い子向けの工夫</span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">短い子の場合のまとめ方</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>一回でポニーテールが結べない場合は、ゴムを<span class="s1">2</span>本使う<span class="s1">&lt;/li&gt;</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;</span>①<span class="s1"> </span>上半分の毛だけ結ぶ<span class="s1"> </span><span class="s3">→</span><span class="s1"> </span>②<span class="s1"> </span>下の毛も含めて結ぶ（二段階）<span class="s1">&lt;/li&gt;</span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">毛量が少ない子はしっかり濡らすと安定</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;li&gt;<span class="s2">後れ毛・前髪はアメピンで固定</span>&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="section faq"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;<span class="s2">よくある質問（</span>FAQ<span class="s2">）</span>&lt;/h2&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">どのくらい髪を濡らしたらいいですか？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span>髪質によって変わります。硬い髪・毛量が多い子は「風呂上がりくらいしっかり濡らす」とやりやすい場合も。お子さんの髪質に合わせて調整を。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">ネットや</span>U<span class="s2">ピンの使い方にコツは？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span>ネットの端は外に出ないように内側へ。<span class="s1">U</span>ピンは練習時<span class="s1">8</span>本／本番は<span class="s1">16</span>本前後が目安。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">分け目やジェルの太い筋が出てしまうときは？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span>根本から濡らし直したり、ジェルを髪全体（毛先除く）に揉み込むと均一になり、筋が目立ちにくくなります。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">ピンは玉付き・玉なしの指定はありますか？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>U</span>ピン・アメピンともに色が黒であれば<span class="s1">OK</span>。指定はありません。長時間なら頭皮負担の少ない玉付きがおすすめ。<span class="s1">※</span>髪飾り用は衣装係の指定が入る場合あり。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">毛量が多くてヘアネットに収まらない場合は？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span>チャコットのヘアネットは<span class="s1">M/L</span>の<span class="s1">2</span>サイズ。毛量が多い子は<span class="s1">L</span>サイズがおすすめ。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;<span class="s2">よれてしまった場合の修正方法は？</span>&lt;span class="chev"&gt;<span class="s3">▶</span>&lt;/span&gt;&lt;/summary&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="content small"&gt;</p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span>ジェルで固まってしまったら霧吹きやスプレーで濡らし直し、よれは根元に寄せてシニヨンの下に隠すと目立ちにくいです。</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
-<p class="p3"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="actions"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;a class="btn" href="#" onclick="window.print();return false;"&gt;<span class="s2">印刷</span> / PDF&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;a class="btn primary" href="https://www.example.com" target="_blank" rel="noopener"&gt;<span class="s2">サンプルリンク</span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<div class="wrap">
+  <header>
+    <h1>綺麗なシニヨンを作るためのコツ（随時更新）</h1>
+  </header>
+
+  <div class="intro">
+    以下4点のポイントをおさえて、綺麗なシニヨンを作りましょう。<br>
+    細かいチェックポイントも記載しているので、仕上げの確認に活用してください。<br>
+    （手順については、シニヨンレクチャー時にお伝えします）
+  </div>
+
+  <section class="section">
+    <h2>準備物</h2>
+    <ul class="basic">
+      <li>ヘアゴム（輪っかではなく紐状、約20cm）</li>
+      <li>ヘアネット</li>
+      <li>Uピン</li>
+      <li>ヘアジェル</li>
+      <li>必要に応じてアメピン</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>4つのポイント（タップで展開）</h2>
+    <details>
+      <summary><span class="badge">①</span>顎から耳を通った延長線上<span class="chev">▶</span></summary>
+      <div class="content">
+        <ul>
+          <li>横から見てラインが合っているか。</li>
+          <li>高さが低すぎたり高すぎたりしていないか。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="badge">②</span>後れ毛・前髪なし<span class="chev">▶</span></summary>
+      <div class="content">
+        <ul>
+          <li>細かい後れ毛も上がっているか。</li>
+          <li>おでこの生え際の短い毛は、コームでとかせる長さがあればジェルをつけて頭頂方向に流しているか。(1~2cmであればそのままでOK)</li>
+          <li>もみあげの毛も上がっているか。</li>
+          <li>耳まわりが浮かず、頭の形にそってきれいに収まっているか。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="badge">③</span>コームラインがつく仕上がり<span class="chev">▶</span></summary>
+      <div class="content">
+        <ul>
+          <li>髪の表面がなめらかに整っているか。</li>
+          <li>コームで整えたラインが見える状態か。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="badge">④</span>お団子はつぶして薄く<span class="chev">▶</span></summary>
+      <div class="content">
+        <ul>
+          <li>正面から見て頭頂より上にボリュームが飛び出していないか。</li>
+          <li>丸みが大きく盛り上がらず、薄くコンパクトに収まっているか。</li>
+          <li>形は「甘食パン」のように、ふんわりしつつ上から軽くつぶれた形になっているか（<a href="https://www.yamazakipan.co.jp/product/03/amashoku.html" target="_blank" rel="noopener noreferrer">甘食とは</a>）。</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <section class="section">
+    <h2>短い子向けの工夫</h2>
+    <details>
+      <summary>短い子の場合のまとめ方<span class="chev">▶</span></summary>
+      <div class="content small">
+        <ul>
+          <li>一回でポニーテールが結べない場合は、ゴムを2本使う(① 上半分の毛だけ結ぶ → ② 下の毛も含めて結ぶ（二段階）)</li>
+          <li>後れ毛・前髪はアメピンで固定</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <section class="section faq">
+    <h2>よくある質問（FAQ）</h2>
+
+    <details>
+      <summary>どのくらい髪を濡らしたらいいですか？<span class="chev">▶</span></summary>
+      <div class="content small">
+        髪質によって変わります。硬い髪・毛量が多い子は「風呂上がりくらいしっかり濡らす」とやりやすい場合も。お子さんの髪質に合わせて調整を。
+      </div>
+    </details>
+
+    <details>
+      <summary>ネットやUピンの使い方にコツは？<span class="chev">▶</span></summary>
+      <div class="content small">
+        ネットの端は外に出ないように内側へ。Uピンは練習時8本／本番は16本前後が目安。
+      </div>
+    </details>
+
+    <details>
+      <summary>分け目やジェルの太い筋が出てしまうときは？<span class="chev">▶</span></summary>
+      <div class="content small">
+        根本から濡らし直したり、ジェルを髪全体（毛先除く）に揉み込むと均一になり、筋が目立ちにくくなります。
+      </div>
+    </details>
+
+    <details>
+      <summary>ピンは玉付き・玉なしの指定はありますか？<span class="chev">▶</span></summary>
+      <div class="content small">
+        Uピン・アメピンともに色が黒であればOK。指定はありません。長時間なら頭皮負担の少ない玉付きがおすすめ。※髪飾り用は衣装係の指定が入る場合あり。
+      </div>
+    </details>
+
+    <details>
+      <summary>毛量が多くてヘアネットに収まらない場合は？<span class="chev">▶</span></summary>
+      <div class="content small">
+        チャコットのヘアネットはM/Lの2サイズ。毛量が多い子はLサイズがおすすめ。
+      </div>
+    </details>
+
+    <details>
+      <summary>よれてしまった場合の修正方法は？<span class="chev">▶</span></summary>
+      <div class="content small">
+        ジェルで固まってしまったら霧吹きやスプレーで濡らし直し、よれは根元に寄せてシニヨンの下に隠すと目立ちにくいです。
+      </div>
+    </details>
+  </section>
+</div>
 </body>
 </html>
